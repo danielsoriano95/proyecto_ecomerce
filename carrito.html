@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+
+
+
+
+    <title>Carrito</title>
+</head>
+<body>
+    
+    <ul class="nav justify-content-center nav_imara">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/carrito">Carrito</a>
+        </li>
+    </ul>
+
+
+
+    <h1>Carrito de compras</h1>
+    <p>Aca podras verificar el listado de tus materas</p>
+    <br><br><hr>
+
+    <table id="tbl_carrito" class="table">
+        <thead>
+            <tr>
+                <!--<th scope="col" class="ps-2"></th>-->
+                <th scope="col" class="ps-2">nombre</th>
+                <th scope="col" class="ps-4">valor</th>
+                <th scope="col" class="ps-2">cantidad</th>
+            </tr>
+        </thead>
+
+    </table>
+
+    <br><br><br>
+
+    <a href="/pago"></a><button id="pagar" class="btn btn-success">pagar</button></a>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $.ajax({
+               url:"/carrito_load",
+               method: "get",
+               success: function(respuesta){
+                $('#tbl_carrito').append(respuesta);
+
+
+               },
+            });
+
+            $(".eliminar").click(function(){
+                
+                $(this).closest("tr").remove();
+
+                var id_boton = $(this).attr('id');
+
+                //Peticion delete del servidor
+                $.ajax({
+                    url: "/producto/" + id_boton,
+                    method: "DELETE",
+                    success:function(r){
+                        console.log("producto eliminado, ID: " + r)
+                    },
+                });
+            });
+
+        /* 
+        $(".eliminar").click(function(){
+                        $(this).closest("tr").remove(); // eliminar de la tabla que se muestra en el HTML
+
+                        var id_boton = $(this).attr('id');
+
+                        //Peticion delete del servidor
+                        $.ajax({
+                            url: "/persona/" + id_boton,
+                            method: "DELETE",
+                            success:function(r){
+                                console.log("Respuesta de eliminar el documento" + r)
+                            },
+                        });
+        
+                    });
+        */
+
+                    
+        $('#pagar').click(function(e){
+            e.preventDefault();
+            /*
+            $.ajax({
+               url:"/pago",
+               method:"get",
+               success: function(b){
+                    console.log("Cargo la pagina de pago");
+               },
+            });*/
+            
+            
+            
+            $.ajax({
+                url:'/compra',
+                method:'post',
+                success: function(a){
+                    console.log("datos enviados a pago");
+                },
+            });
+        });
+    });
+
+
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+</body>
+</html>

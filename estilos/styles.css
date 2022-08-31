@@ -1,0 +1,46 @@
+.nav_imara{
+    background-color: aliceblue;
+}
+
+body{
+    background-color: wheat;
+}
+
+.grid_products{
+    border: solid black 3px;
+    margin-top: 100px;
+}
+
+.img_producto{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.col_productos{
+    height: 300px;
+    width: 300px;
+    border: solid white 2px;
+}
+
+.col_detProductos{
+    height: 500px;
+    width: 500px;
+    border: solid white 3px;
+}
+
+.img_carrito{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.div_img_carrito{
+    height: 50px;
+    width: 50px;
+    border: solid white 3px;
+}
+
