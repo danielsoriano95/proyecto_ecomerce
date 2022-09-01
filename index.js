@@ -93,7 +93,7 @@ app.get("/carrito_load", async function (req, res){
         a = a + '<td class="ps-2">' + producto[i].nombre + '</td>';
         a = a + '<td class="ps-4">' + producto[i].valor + '</td>';
         a = a + '<td class="ps-2">' + producto[i].cantidad + '</td>';
-        a = a + '<td class="ms-2"> <button id="' + producto[i].id + '" class="eliminar btn btn-danger"> Eliminar</button></td>'; 
+        a = a + '<td class="ms-2"> <button id="' + producto[i]._id + '" class="eliminar btn btn-warning"> Eliminar</button></td>'; 
         a = a + '</tr>';
     }
     a = a + '<tr>'
@@ -190,7 +190,7 @@ app.delete('/producto/:dato', async function(req, res){
     var parametro = req.params.dato;
     console.log("Eliminando el documento con ID: " + parametro);
 
-    var p = await Pers.findById(parametro);
+    var p = await Cars.findById(parametro);
     await p.remove();
 
     res.send("Se elimino correctamente");

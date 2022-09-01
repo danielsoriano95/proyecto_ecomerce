@@ -43,7 +43,7 @@
 
     <br><br><br>
 
-    <a href="/pago"></a><button id="pagar" class="btn btn-success">pagar</button></a>
+    <a href="/pago" class="btn btn-success">pagar</button></a>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -56,25 +56,26 @@
                success: function(respuesta){
                 $('#tbl_carrito').append(respuesta);
 
+                $(".eliminar").click(function(){
+                
+                    $(this).closest("tr").remove();
+
+                    var id_boton = $(this).attr('id');
+                    console.log(id_boton);
+                    //Peticion delete del servidor
+                    $.ajax({
+                        url: "/producto/" + id_boton,
+                        method: "DELETE",
+                        success:function(r){
+                            console.log("producto eliminado, ID: " + r)
+                        },
+                    });
+                });
 
                },
             });
 
-            $(".eliminar").click(function(){
-                
-                $(this).closest("tr").remove();
-
-                var id_boton = $(this).attr('id');
-
-                //Peticion delete del servidor
-                $.ajax({
-                    url: "/producto/" + id_boton,
-                    method: "DELETE",
-                    success:function(r){
-                        console.log("producto eliminado, ID: " + r)
-                    },
-                });
-            });
+            
 
         /* 
         $(".eliminar").click(function(){
@@ -95,27 +96,7 @@
         */
 
                     
-        $('#pagar').click(function(e){
-            e.preventDefault();
-            /*
-            $.ajax({
-               url:"/pago",
-               method:"get",
-               success: function(b){
-                    console.log("Cargo la pagina de pago");
-               },
-            });*/
-            
-            
-            
-            $.ajax({
-                url:'/compra',
-                method:'post',
-                success: function(a){
-                    console.log("datos enviados a pago");
-                },
-            });
-        });
+        
     });
 
 
