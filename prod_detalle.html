@@ -47,14 +47,7 @@
 
         
     </div>
-      <!--
-    <div class="row  pt-2"> 
-        <div class="col">
-            <button class="btn btn-danger" id="btn_comprar">comprar</button>
-           <input type="number" min="1" max="10" id="cantidad">
-        </div>
-    </div>
-    -->
+      
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -74,15 +67,12 @@
                     $("#precio").append(producto.valor);
                     $("#descrip").append(producto.descripcion);
                     matera = producto;
-                    
-                    //console.log(producto);
-                    //$("#prod_det").append(producto);
                 },
             });
            
             $("#btn_comprar").click(function(e){
                 e.preventDefault();
-                num_prod = $('#cantidad').val();//??? como tomar la cantidad y agrgarla al carrito???
+                num_prod = $('#cantidad').val();
                                              
                     $.ajax({
                     url:"/pr1_buy",
@@ -104,13 +94,6 @@
             });
 
     </script>
-
-
-
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 

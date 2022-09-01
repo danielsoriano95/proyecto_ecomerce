@@ -107,37 +107,6 @@ app.get("/carrito_load", async function (req, res){
     res.send(a);
 });
 
-/* ESTO ES EL EJEMPLO PARA LLAMAR LOS DATOS DE LA BASE DE DATOS AL SERVIDOR Y USARLOS
-//EJEMPLO CON LA BASE DE DATOS DE PERSONAS QUE TENIAMOS
-
-app.delete('/persona/:dato', async function(req, res){
-    var parametro = req.params.dato;
-    console.log("Eliminando el documento con ID: " + parametro);
-
-    var p = await Pers.findById(parametro);
-    await p.remove();
-
-    res.send("La persona se elimino correctamente");
-});
-
-
-
-app.get("/carrito", async function (req, res){
-    var documentos = await Cars.find();
-    var a = "";
-    
-    for (var i=0; i < documentos.lenght; i++){
-        var a = a + "<tr>";
-        var a = a + "<td>" + documentos[i].nombre + '</td>';
-        var a = a + "<td>" + documentos[i].apellido + '</td>';
-        var a = a + "<td> <button id=" + documentos[i].id + "'class = 'eliminar'> Eliminar</button></td>";
-        var a = a + "<tr>";
-    }   
-    res.send(a);
-});
-*/
-
-
 
 //**POST
 app.post('/producto/:id', async function(req, res){
@@ -170,9 +139,6 @@ app.post('/pr1_buy', async function(req, res){
     res.send('producto agregado');
 });
 
-app.post('/pago_conf', async function(req, res){
-    
-});
 
 app.post("/pago_fin", async function(req, res){
     var info_pago = req.body;
@@ -195,17 +161,7 @@ app.delete('/producto/:dato', async function(req, res){
 
     res.send("Se elimino correctamente");
 });
-/*
-app.delete('/persona/:dato', async function(req, res){
-    var parametro = req.params.dato;
-    console.log("Eliminando el documento con ID: " + parametro);
 
-    var p = await Pers.findById(parametro);
-    await p.remove();
-
-    res.send("La persona se elimino correctamente");
-});
-*/ 
 // Listen
 app.listen(3000, function(req, res){
     console.log('conectado al puerto 3000 de productos')
