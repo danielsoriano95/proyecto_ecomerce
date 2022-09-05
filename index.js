@@ -53,6 +53,7 @@ app.get("/producto/:id", async function (req, res) {
 app.get("/productos_load", async function(req, res){
     var busqueda = await Prods.find();
     var grid = "";
+    var for_listado = busqueda.length/2;
     
     for(var i=0; i<2; i++){
         grid = grid + '<div class="row pt-5">';
@@ -89,10 +90,10 @@ app.get("/carrito_load", async function (req, res){
     for(var i=0; i < producto.length; i++){
         total = total + producto[i].valor * producto[i].cantidad;
         a = a + '<tr>';
-        //a = a + '<div class="div_img_carrito"><td><img class="img_carrito" src="'+ producto[i].foto +'"></td></div>';
-        a = a + '<td class="ps-2">' + producto[i].nombre + '</td>';
+        a = a + '<td><div class="div_img_carrito"><img class="img_producto" src="'+ producto[i].foto +'"></div></td>';
+        a = a + '<td class="ps-1">' + producto[i].nombre + '</td>';
         a = a + '<td class="ps-4">' + producto[i].valor + '</td>';
-        a = a + '<td class="ps-2">' + producto[i].cantidad + '</td>';
+        a = a + '<td class="ps-3">' + producto[i].cantidad + '</td>';
         a = a + '<td class="ms-2"> <button id="' + producto[i]._id + '" class="eliminar btn btn-warning"> Eliminar</button></td>'; 
         a = a + '</tr>';
     }
@@ -107,6 +108,33 @@ app.get("/carrito_load", async function (req, res){
     res.send(a);
 });
 
+app.get("/pago_lista", async function(req, res){
+    var producto = await Cars.find();
+    var a = "";
+    var total = 0;
+
+    for (var i = 0; i < producto.length; i++){
+        total = total + producto[i].valor * producto[i].cantidad;
+        var total_linea = producto[i].valor*producto[i].cantidad 
+        a = a + '<tr>';
+        a = a + '<td><div class="div_img_carrito"><img class="img_producto" src="'+ producto[i].foto +'"></div></td>';
+        a = a + '<td class="ps-1">' + producto[i].nombre + '</td>';    
+        a = a + '<td class="ps-3">' + producto[i].cantidad + '</td>';
+        a = a + '<td class="ps-4">' + total_linea + '</td>';
+        a = a + '</tr>';
+    }
+    
+    a = a + '<tr class="pb-2 pe-2">'
+    a = a + '<td></td>'
+    a = a + '<td></td>'
+    a = a + '<td>Total</td>'
+    a = a + '<td>'
+    a = a + '<strong>'+ total +'<strong>';
+    a = a + '</td>'
+    a = a + '</tr>'
+
+    res.send(a);
+});
 
 //**POST
 app.post('/producto/:id', async function(req, res){

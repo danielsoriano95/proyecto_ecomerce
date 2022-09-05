@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="styles.css">
     
     
     
@@ -27,51 +27,66 @@
     
     <h2 class="ms-5">Por favor complete la informacion de envio y pago</h2>
 
-    <form id="pago_form">
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">nombre</label>
-            <input name="env_nom" type="text" class="form-control" id="exampleInputPassword1">
+    <div class="row" id="div_row">
+        <div class="col" id="div_form">
+            <form id="pago_form">
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">nombre</label>
+                    <input name="env_nom" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">apellido</label>
+                    <input name="env_ape" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">direccion</label>
+                    <input name="env_dir" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <hr>
+                <div class="mb-3 form-check ms-5 me-5">
+                    <input name="TD" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Tarjeta debito</label>
+                </div>
+                <div class="mb-3 form-check ms-5 me-5">
+                    <input name="TC" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Tarjeta de credito</label>
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">Nombre en la tarjeta</label>
+                    <input name="tar_nom" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">Numero de la tarjeta de credito</label>
+                    <input name="tar_num" type="number" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">expira en</label>
+                    <input name="expiracion" type="text" class="form-control" id="exampleInputPassword1" placeholder="MM/YY">
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                    <label for="exampleInputPassword1" class="form-label">CVV</label>
+                    <input name="CVV" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
         </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">apellido</label>
-            <input name="env_ape" type="text" class="form-control" id="exampleInputPassword1">
+        <div class="col">
+            <table class="table" id="lista_pago">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Cantidad</th>
+                        <th>Total Fila</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">direccion</label>
-            <input name="env_dir" type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-        <hr>
-        <div class="mb-3 form-check ms-5 me-5">
-            <input name="TD" type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Tarjeta debito</label>
-        </div>
-        <div class="mb-3 form-check ms-5 me-5">
-            <input name="TC" type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Tarjeta de credito</label>
-        </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">Nombre en la tarjeta</label>
-            <input name="tar_nom" type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">Numero de la tarjeta de credito</label>
-            <input name="tar_num" type="number" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">expira en</label>
-            <input name="expiracion" type="text" class="form-control" id="exampleInputPassword1" placeholder="MM/YY">
-        </div>
-        <div class="mb-3 ms-5 me-5">
-            <label for="exampleInputPassword1" class="form-label">CVV</label>
-            <input name="CVV" type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-       
-        
+    </div>
+            
         
         <button type="submit" class="btn btn-primary ms-4" id="pago_conf">Confirmar pago</button>
     </form>
@@ -82,6 +97,15 @@
 
         $(document).ready(function(){
             
+            $.ajax({
+                url:'/pago_lista',
+                method:'get',
+                success: function(b){
+                    
+                    
+                    $('#lista_pago').append(b)
+                },
+            });
 
             $('#pago_conf').click(function(e){
                 e.preventDefault();

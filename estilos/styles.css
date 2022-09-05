@@ -30,17 +30,30 @@ body{
     border: solid white 3px;
 }
 
-.img_carrito{
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-}
-
-
 .div_img_carrito{
-    height: 50px;
-    width: 50px;
-    border: solid white 3px;
+    height: 100px;
+    width: 100px;
+    
 }
 
+#div_form{
+    width: 600px;
+}
+
+#lista_pago{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 20px;
+    width: fit-content;
+    padding: 10px;
+    margin-left: 200px;
+}
+
+/*
+
+
+#div_row {
+    display: flexbox;
+} 
+
+*/
